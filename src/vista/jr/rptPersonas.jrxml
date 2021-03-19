@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="04e9c5b8-b822-49b5-97a5-61fd0e2f9745">
+	<property name="ireport.zoom" value="0.9090909090909095"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="327bc545-a6c7-49fa-978c-60273468877c"/>
+	<parameter name="aguja" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     persona."idPersona" AS persona_idPersona,
+     persona."Nombres" AS persona_Nombres,
+     persona."Apellidos" AS persona_Apellidos,
+     persona."fechaNacimiento" AS persona_fechaNacimiento,
+     persona."telefono" AS persona_telefono,
+     persona."sexo" AS persona_sexo,
+     persona."sueldo" AS persona_sueldo,
+     persona."cupo" AS persona_cupo
+FROM
+     "public"."persona" persona
+WHERE
+     UPPER(persona."Nombres") LIKE UPPER($P{aguja})
+  OR UPPER(persona."Apellidos") LIKE UPPER($P{aguja})
+  OR UPPER(persona."idPersona") LIKE UPPER($P{aguja})]]>
+	</queryString>
+	<field name="persona_idpersona" class="java.lang.String"/>
+	<field name="persona_nombres" class="java.lang.String"/>
+	<field name="persona_apellidos" class="java.lang.String"/>
+	<field name="persona_fechanacimiento" class="java.sql.Date"/>
+	<field name="persona_telefono" class="java.lang.String"/>
+	<field name="persona_sexo" class="java.lang.String"/>
+	<field name="persona_sueldo" class="java.math.BigDecimal"/>
+	<field name="persona_cupo" class="java.lang.Integer"/>
+	<background>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement uuid="76f2839f-b603-493d-a00b-e6497162befe" x="203" y="326" width="170" height="135"/>
+				<imageExpression><![CDATA["G:\\misdocs\\NetBeansProjects\\mvcjasper\\src\\vista\\recursos\\gesinsoftlogo.png"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="101" splitType="Stretch">
+			<image>
+				<reportElement uuid="ab50b487-1876-41d8-82c5-79d84727f912" x="4" y="0" width="190" height="65"/>
+				<imageExpression><![CDATA["G:\\misdocs\\NetBeansProjects\\mvcjasper\\src\\vista\\recursos\\gesinsoft.png"]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement uuid="a1464148-daca-4500-ba4a-d1dacfc66b41" mode="Opaque" x="203" y="0" width="372" height="65" forecolor="#006699" backcolor="#006699"/>
+				<staticText>
+					<reportElement uuid="3b589089-2b34-412d-933d-51bd53839155" style="Title" x="12" y="7" width="335" height="48"/>
+					<textElement textAlignment="Right">
+						<font size="40" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Reporte de Personas]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement uuid="bc5124fd-2686-4142-9cc9-2e08994a25cc" x="4" y="0" width="551" height="20"/>
+				<staticText>
+					<reportElement uuid="55827348-e1e9-4152-b150-7441ac30a2d0" style="Column header" positionType="Float" x="4" y="0" width="86" height="20" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Arial" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Identifcación]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="a800cf8c-59be-46f2-a8f5-865be8ad670c" style="Column header" positionType="Float" x="92" y="0" width="105" height="20" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Arial" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Nombres]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="eda46ec0-20e5-43a1-a61f-6bfee4ae79ca" style="Column header" positionType="Float" x="197" y="0" width="122" height="20" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Arial" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Apellidos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="39465c05-72a4-4ea6-9cc7-fa2410248976" style="Column header" positionType="Float" x="319" y="0" width="84" height="20" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Arial" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Fecha]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="d6d367f0-7218-49c9-a909-843d8b779903" style="Column header" positionType="Float" x="403" y="0" width="93" height="20" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Arial" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Teléfono]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="f8748f21-c58a-4905-a4ff-110eed9804e8" style="Column header" positionType="Float" x="496" y="0" width="53" height="20" forecolor="#000000"/>
+					<textElement>
+						<font fontName="Arial" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Sexo]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<frame>
+				<reportElement uuid="952b6d94-a073-41f6-b76a-6e51a9081ac8" x="6" y="0" width="551" height="20" backcolor="#CCCCCC"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="35398ffe-8cff-4f6b-b7da-cb4a65e4dc33" style="Detail" positionType="Float" x="0" y="2" width="88" height="18"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{persona_idpersona}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="c8a730f7-43cb-4288-b6b1-237ddc11fa2f" style="Detail" positionType="Float" x="88" y="2" width="107" height="18"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{persona_nombres}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="e967e5ef-3463-4f99-bbbd-7487af7a81a1" style="Detail" positionType="Float" x="197" y="2" width="120" height="18"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{persona_apellidos}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+					<reportElement uuid="0d1161e5-87e1-409d-b154-d11a6b12c4ac" style="Detail" positionType="Float" x="317" y="2" width="84" height="18"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{persona_fechanacimiento}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="e846af6e-d274-404e-8145-8baa9407418c" style="Detail" positionType="Float" x="401" y="2" width="93" height="18"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{persona_telefono}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="8eae286a-3da6-435a-bff7-4b4a12dc8a42" style="Detail" positionType="Float" x="494" y="2" width="55" height="18"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<topPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{persona_sexo}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch">
+			<line>
+				<reportElement uuid="ac5797a4-260e-4890-bc77-7a6b9ff39c10" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch">
+			<frame>
+				<reportElement uuid="83dba77e-dba5-4545-a516-e29ba81fe21e" mode="Opaque" x="2" y="0" width="555" height="13" forecolor="#D0B48E" backcolor="#006699"/>
+				<textField>
+					<reportElement uuid="26d88a89-8aaf-4024-a24a-18601544fafb" style="Column header" x="405" y="0" width="80" height="13" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Report">
+					<reportElement uuid="28d658fe-ee5a-4a27-b705-fe6cbd707b41" style="Column header" x="485" y="-1" width="68" height="13" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="9f8ecfbb-64a6-4f0e-90b4-6577d2d5d8f6" style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
