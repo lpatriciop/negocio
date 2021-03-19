@@ -78,7 +78,7 @@ public class ControladorTabla {
                        
     }
     
-    
+    //comentadior
     public void iniciaControlador(){
    
        KeyListener kl=new KeyListener() {
